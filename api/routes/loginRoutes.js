@@ -13,4 +13,7 @@ module.exports = function(app) {
     .get(userList.get_user_details)
     .put(userList.update_user_details)
     .delete(userList.delete_a_user);
+
+  app.route('/login')
+      .post(userList.login);
 };

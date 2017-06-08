@@ -12,8 +12,21 @@ exports.list_all_users = function(req, res) {
   });
 };
 
+exports.login = function (req, res) {
+    User.findOne({username:req.body.username},function (err, user) {
+        if (err)
+            res.send(err);
+
+        if( user && user.password ===req.body.password){
+            res.json({ message: 'user successfully login' });
+            }
+        else {
+            res.json({ message: 'invalid user details' });
+        }
+    });
 
 
+    };
 
 exports.create_a_user = function(req, res) {
   var new_user = new User(req.body);
