@@ -6,11 +6,26 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   username: {
     type: String,
-    Required: 'Kindly enter the username'
+    Required: 'Kindly enter the UserName'
   },
+    rollno: {
+        type: String,
+        Required: 'Kindly enter the RollNo'
+    },
+    name: {
+        type: String,
+        Required:'Kindly enter the Name'
+    },
+    dob: {
+        type: String
+
+    },
+    class:{
+      type:String
+    },
     password: {
         type: String,
-        Required: 'Kindly enter the username'
+        Required: 'Kindly enter the password'
   }
 });
 

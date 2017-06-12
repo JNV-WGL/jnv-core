@@ -16,4 +16,6 @@ module.exports = function(app) {
 
   app.route('/login')
       .post(userList.login);
+  app.route('/signup')
+      .post(userList.create_a_user);
 };
