@@ -3,7 +3,6 @@
 
 var mongoose = require('mongoose'),
   User = mongoose.model('Users');
-
 exports.list_all_users = function(req, res) {
   User.find({}, function(err, user) {
     if (err)
@@ -18,10 +17,10 @@ exports.login = function (req, res) {
             res.send(err);
 
         if( user && user.password ===req.body.password){
-            res.json({ message: 'user successfully login' });
+            res.json({ isAuthenticated: true });
             }
         else {
-            res.json({ message: 'invalid user details' });
+            res.json({ isAuthenticated: false });
         }
     });
 
