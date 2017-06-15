@@ -17,10 +17,10 @@ exports.login = function (req, res) {
             res.send(err);
 
         if( user && user.password ===req.body.password){
-            res.json({ isAuthenticated: true });
+            res.json({ isAuthenticated: true,username:user.username });
             }
         else {
-            res.json({ isAuthenticated: false });
+            res.json({ isAuthenticated: false,username:null });
         }
     });
 
