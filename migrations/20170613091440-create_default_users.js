@@ -9,7 +9,7 @@ module.exports = {
 
   down(db, next) {
     // TODO write the statements to rollback your migration (if possible)
-      db.users.remove({});
+      db.users.remove({username:"userone"});
     next();
   }
 

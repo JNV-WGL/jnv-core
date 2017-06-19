@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function(app) {
   var userList = require('../controllers/loginController');
+  var attendance = require('../controllers/attendanceController');
 
 
   // todoList Routes
@@ -18,4 +19,7 @@ module.exports = function(app) {
       .post(userList.login);
   app.route('/signup')
       .post(userList.create_a_user);
+
+  app.route('/:username/attendance/:mmyyyy')
+      .get(attendance.get_attendance);
 };
