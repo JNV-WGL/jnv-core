@@ -1,6 +1,5 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   User = mongoose.model('Users');
 exports.list_all_users = function(req, res) {
@@ -17,10 +16,11 @@ exports.login = function (req, res) {
             res.send(err);
 
         if( user && user.password ===req.body.password){
+            req.session.user=user;
             res.json({ isAuthenticated: true,username:user.username });
             }
         else {
-            res.json({ isAuthenticated: false,username:null });
+            res.json({ isAuthenticated: "false",username:"null" });
         }
     });
 

@@ -1,9 +1,9 @@
 'use strict';
 
-
 var mongoose = require('mongoose'), attendance = mongoose.model('attendances');
 
 exports.get_attendance = function(req, res) {
+    if(req.session.user){
     var yearMonth = req.params.mmyyyy;
     var year=Number(yearMonth.slice(-4));
     var month=Number(yearMonth.slice(0,2));
@@ -12,4 +12,8 @@ exports.get_attendance = function(req, res) {
             res.send(err);
         res.json(user);
     });
+    }
+    else{
+        res.status(401).send();
+    }
 };
