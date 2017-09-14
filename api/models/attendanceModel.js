@@ -6,19 +6,19 @@ mongoose.set('debug', true);
 
 var AttendanceSchema = new Schema({
     username: {
-        type: String,
+        type: String
     },
     month: {
-        type:Number,
+        type: Number
     },
     year: {
-        type:Number,
+        type: Number
     },
     presentDates: {
-        type:[Number],
+        type: [Number]
     },
     absentDates: {
-        type:[Number],
+        type: [Number]
     }
 });
 

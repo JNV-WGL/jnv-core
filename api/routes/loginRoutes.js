@@ -22,4 +22,6 @@ module.exports = function(app) {
 
   app.route('/:username/attendance/:mmyyyy')
       .get(attendance.get_attendance);
+  app.route('/:username/attendance_by_year/:year')
+      .get(attendance.get_attendance_by_year);
 };
