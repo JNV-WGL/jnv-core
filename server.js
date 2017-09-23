@@ -6,6 +6,7 @@ var express = require('express'),
   MongoStore = require('connect-mongo')(session),
   User = require('./api/models/userModel'),
   Attendance = require('./api/models/attendanceModel'),
+  Holiday = require('./api/models/holidayModel');
   bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
