@@ -8,7 +8,36 @@ exports.get_attendance = function (req, res) {
         var yearMonth = req.params.mmyyyy;
         var year = Number(yearMonth.slice(-4));
         var month = Number(yearMonth.slice(0, 2));
-        attendance.find({username: req.params.username, month: month, year: year}, function (err, attendanceData) {
+        attendance.aggregate([
+            {
+                $match: {
+                    username: req.params.username,
+                    month: month,
+                    year: year
+                },
+            },
+            {
+                $lookup: {
+                    from : "holiday",
+                    localField: "year",
+                    foreignField: "year",
+                    as: "holidays"
+                }
+            },
+            {
+                $lookup: {
+                    from : "holiday",
+                    localField: "month",
+                    foreignField: "month",
+                    as: "holidays"
+                }
+            },
+            {
+                $project:{
+                    "_id": 1,"username": 1,"month": 1,"year": 1,"presentDates": 1, "absentDates": 1, "holidays.name": 1, "holidays.day": 1
+                }
+            }
+            ], function (err, attendanceData) {
             if (err)
                 res.send(err);
             res.json(attendanceData);
